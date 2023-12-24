@@ -1,0 +1,78 @@
+<div class="content" role="main">
+  
+ 
+
+  <h2>REGISTRO DE VERSOS DE LA BIBLIA</h2>
+  <hr>
+
+
+  <div class="container P-2">
+    <div class="row">
+      <!-- REGISTRO DE VERSO -->
+      <div class="col-md-5 text-center">
+        <div class="modal-content">
+          <div class="modal-header ">
+            <h2>Registrar Verso</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal('modalLibro')" style="border-style: none; border-radius: 100%;">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+                <div class="col d-none">
+                  <label>Id:</label>
+                  <input type="number" class="form-control" [(ngModel)]="libro.id" id="idL">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" [(ngModel)]="libro.nombre" id="nameL" placeholder="Registrar referencia bíblica">
+                </div>
+                <br>
+              </div>
+              Pertenece:<select class="form-select" aria-label="Default select example" [(ngModel)]="libro.categoria">
+                <option *ngFor="let item of categoria" [value]="item.id">{{item.name}}</option>
+              </select>
+            
+            <div style="width: 100%; padding: 5px; display: flex; justify-content: right;">
+              <button type="button" [class]="isUpdateL ? 'btn btn-primary' : 'btn btn-success'" (click)="guardarLibro()" style="margin-right: 20px;">{{isUpdateL ? 'Actualizar' : 'Guardar'}}</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- LISTA DE REGISTROS -->
+      </div>
+      <div class="col-md-7 text-center">
+        <h2>Registros</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Nro</th>
+              <th>Nombre</th>
+              <th>Libro</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listCategoria">
+              <td>{{item.id}}</td>
+              <td>{{item.nombre}}</td>
+              <td>{{item.catname}}</td>
+              <td>
+                <button class="btn" (click)="eliminarLibro(item.id)"><i class="fa fa-trash"></i></button>
+                <button class="btn" (click)="editarLibro(item)"><i class="fa fa-pencil"></i></button>
+              </td>
+              <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+  
